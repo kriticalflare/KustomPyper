@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project specific
+secrets.py
+Venv/
+.vscode
+pic1.*
