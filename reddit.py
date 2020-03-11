@@ -11,8 +11,12 @@ class Reddit:
                      client_secret=secrets.client_secret,
                      user_agent=secrets.user_agent)
 
+    def setSubreddit(self,subreddit):
+        self.subreddit = subreddit
+
     def nextWallpaper(self):
-        wallpaper_sub = self.instance.subreddit('wallpaper')
+        print(self.subreddit)
+        wallpaper_sub = self.instance.subreddit(self.subreddit)
         wallpaper_hot = wallpaper_sub.hot(limit=25)
         submission_list = []
         for submission in wallpaper_hot:
