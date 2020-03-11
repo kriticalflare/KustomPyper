@@ -13,13 +13,28 @@ class Reddit:
 
     def setSubreddit(self,subreddit):
         self.subreddit = subreddit
+    
+    def setCategory(self,category):
+        self.category = category
+
+    def getSubmissions(self):
+        self.wallpaper_sub = self.instance.subreddit(self.subreddit)
+        if self.category == 'hot':
+            return self.wallpaper_sub.hot(limit=25)
+        elif self.category == 'top':
+            return self.wallpaper_sub.top(limit=25)
+        elif self.category == 'new':
+            return self.wallpaper_sub.new(limit=25)
+        elif self.category == 'controversial':
+            return self.wallpaper_sub.controversial(limit=25)
+        elif self.category == 'rising':
+            return self.wallpaper_sub.rising(limit=25)
 
     def nextWallpaper(self):
         print(self.subreddit)
-        wallpaper_sub = self.instance.subreddit(self.subreddit)
-        wallpaper_hot = wallpaper_sub.hot(limit=25)
+        wallpaper_submissions = self.getSubmissions()
         submission_list = []
-        for submission in wallpaper_hot:
+        for submission in wallpaper_submissions:
             submission_list.append(submission.url)
 
         random_int = random.randint(0,24)

@@ -22,7 +22,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def nextWallpaper(self):
         subreddit = self.subredditComboBox.currentText()
-        print(type(subreddit))
+        category = self.categoryComboBox.currentText()
+        self.reddit_instance.setCategory(category)
         self.reddit_instance.setSubreddit(subreddit)
         self.reddit_instance.nextWallpaper()
         self.image_path = self.reddit_instance.download_path()
