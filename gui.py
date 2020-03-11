@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.photo.setText(_translate("MainWindow", "Set a random wallpaper from reddit!"))
-        self.wallpaperButton.setText(_translate("MainWindow", "Set a wallpaper"))
+        self.wallpaperButton.setText(_translate("MainWindow", "Set as wallpaper"))
         self.nextWallButton.setText(_translate("MainWindow", "Next wallpaper"))
         self.label.setText(_translate("MainWindow", "Subreddit : "))
         self.subredditComboBox.setItemText(0, _translate("MainWindow", "wallpapers"))
