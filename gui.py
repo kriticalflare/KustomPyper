@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "KustomPyper"))
         self.photo.setText(_translate("MainWindow", "Set a random wallpaper from reddit!"))
         self.wallpaperButton.setText(_translate("MainWindow", "Set as wallpaper"))
         self.nextWallButton.setText(_translate("MainWindow", "Next wallpaper"))
