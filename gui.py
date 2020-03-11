@@ -8,8 +8,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-    def __init__(self):
-        self.reddit_instance = reddit.Reddit()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1127, 846)
@@ -40,19 +38,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
-        self.nextWallButton.clicked.connect(self.nextWallpaper)
-        self.wallpaperButton.clicked.connect(self.setWallpaper)
-
-    def nextWallpaper(self):
-        self.reddit_instance.nextWallpaper()
-        self.image_path = self.reddit_instance.download_path()
-        self.reddit_instance.download_wall()
-        self.photo.setPixmap(QtGui.QPixmap(self.image_path))
-        self.photo.setScaledContents(True)
-        
-    def setWallpaper(self):
-        print(self.image_path)
-        wall.changeBG(self.image_path)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
