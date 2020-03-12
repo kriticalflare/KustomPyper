@@ -44,7 +44,7 @@ class Reddit:
         # print(random_int)
         self.wallpaper_url = submission_list[random_int]
         print(self.wallpaper_url)
-        if 'imgur.com/a/' in self.wallpaper_url or 'imgur.com/gallery/':
+        if 'imgur.com/a/' in self.wallpaper_url or 'imgur.com/gallery/' in self.wallpaper_url:
             #  pass on imgur albums for now 
             self.nextWallpaper()
 
