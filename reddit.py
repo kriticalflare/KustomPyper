@@ -16,19 +16,22 @@ class Reddit:
     
     def setCategory(self,category):
         self.category = category
+    
+    def setLimit(self, limit):
+        self.limit = limit
 
     def getSubmissions(self):
         self.wallpaper_sub = self.instance.subreddit(self.subreddit)
         if self.category == 'hot':
-            return self.wallpaper_sub.hot(limit=25)
+            return self.wallpaper_sub.hot(limit=self.limit)
         elif self.category == 'top':
-            return self.wallpaper_sub.top(limit=25)
+            return self.wallpaper_sub.top(limit=self.limit)
         elif self.category == 'new':
-            return self.wallpaper_sub.new(limit=25)
+            return self.wallpaper_sub.new(limit=self.limit)
         elif self.category == 'controversial':
-            return self.wallpaper_sub.controversial(limit=25)
+            return self.wallpaper_sub.controversial(limit=self.limit)
         elif self.category == 'rising':
-            return self.wallpaper_sub.rising(limit=25)
+            return self.wallpaper_sub.rising(limit=self.limit)
 
     def nextWallpaper(self):
         print(self.subreddit)
@@ -37,7 +40,7 @@ class Reddit:
         for submission in wallpaper_submissions:
             submission_list.append(submission.url)
 
-        random_int = random.randint(0,24)
+        random_int = random.randint(0,self.limit - 1)
         # print(random_int)
         self.wallpaper_url = submission_list[random_int]
         print(self.wallpaper_url)

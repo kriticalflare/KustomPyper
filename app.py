@@ -24,8 +24,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def nextWallpaper(self):
         subreddit = self.subredditComboBox.currentText()
         category = self.categoryComboBox.currentText()
+        limit = self.limitComboBox.currentText()
+        limit = int(limit)
         self.reddit_instance.setCategory(category)
         self.reddit_instance.setSubreddit(subreddit)
+        self.reddit_instance.setLimit(limit)
         self.reddit_instance.nextWallpaper()
         self.image_path = self.reddit_instance.download_path()
         self.reddit_instance.download_wall()
