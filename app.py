@@ -16,6 +16,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
         self.setupUi(self)
+        self.image_path = None
         self.reddit_instance = reddit.Reddit()
         self.nextWallButton.clicked.connect(self.nextWallpaper)
         self.wallpaperButton.clicked.connect(self.setWallpaper)
@@ -32,8 +33,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.photo.setScaledContents(True)
         
     def setWallpaper(self):
-        print(self.image_path)
-        wall.changeBG(self.image_path)
+        if self.image_path is None:
+            messagebox = QMessageBox()
+            messagebox.setWindowTitle('Wallpaper not found!')
+            messagebox.setText('Choose a wallpaper to set')
+            messagebox.setIcon(QMessageBox.Critical)
+            messagebox.exec_()
+        else: 
+            wall.changeBG(self.image_path)
 
 
 if __name__ == "__main__":
