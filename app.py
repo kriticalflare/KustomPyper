@@ -10,6 +10,7 @@ from PyQt5 import QtGui
 from gui import Ui_MainWindow
 import wall
 import reddit
+import win_darkmode
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -35,6 +36,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.photo.setPixmap(QtGui.QPixmap(self.image_path))
         self.photo.setScaledContents(True)
         
+    def toggleDarkMode(self):
+        if self.darkModeCheckBox.isChecked():
+            win_darkmode.setDarkMode()
+        else:
+            win_darkmode.setLightMode()
+
     def setWallpaper(self):
         if self.image_path is None:
             messagebox = QMessageBox()
@@ -43,6 +50,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             messagebox.setIcon(QMessageBox.Critical)
             messagebox.exec_()
         else: 
+            self.toggleDarkMode()
             wall.changeBG(self.image_path)
 
 

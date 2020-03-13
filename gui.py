@@ -56,6 +56,13 @@ class Ui_MainWindow(object):
         self.limitComboBox.addItem("")
         self.limitComboBox.addItem("")
         self.limitComboBox.addItem("")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(800, 670, 81, 16))
+        self.label.setObjectName("label")
+        self.darkModeCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.darkModeCheckBox.setGeometry(QtCore.QRect(940, 670, 81, 20))
+        self.darkModeCheckBox.setText("")
+        self.darkModeCheckBox.setObjectName("darkModeCheckBox")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1127, 26))
@@ -90,6 +97,7 @@ class Ui_MainWindow(object):
         self.limitComboBox.setItemText(0, _translate("MainWindow", "10"))
         self.limitComboBox.setItemText(1, _translate("MainWindow", "25"))
         self.limitComboBox.setItemText(2, _translate("MainWindow", "50"))
+        self.label.setText(_translate("MainWindow", "Dark Mode :"))
         self.menuFiles.setTitle(_translate("MainWindow", "Files"))
 
 
