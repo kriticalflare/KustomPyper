@@ -23,18 +23,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.wallpaperButton.clicked.connect(self.setWallpaper)
 
     def nextWallpaper(self):
+        self.nextWallButton.setEnabled(False)
         subreddit = self.subredditComboBox.currentText()
         category = self.categoryComboBox.currentText()
         limit = self.limitComboBox.currentText()
         limit = int(limit)
-        self.reddit_instance.setCategory(category)
-        self.reddit_instance.setSubreddit(subreddit)
-        self.reddit_instance.setLimit(limit)
-        self.reddit_instance.nextWallpaper()
-        self.image_path = self.reddit_instance.download_path()
-        self.reddit_instance.download_wall()
+        self.download_thread = DownloadThread(self.reddit_instance,subreddit,category,limit)
+        self.download_thread.signal.connect(self.displayWallpaper)
+        self.download_thread.start()
+
+    def displayWallpaper(self,image_path):
+        self.image_path = image_path
         self.photo.setPixmap(QtGui.QPixmap(self.image_path))
         self.photo.setScaledContents(True)
+        self.nextWallButton.setEnabled(True)
+
         
     def toggleDarkMode(self):
         if self.darkModeCheckBox.isChecked():
@@ -52,6 +55,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else: 
             self.toggleDarkMode()
             wall.changeBG(self.image_path)
+
+class DownloadThread(QThread):
+    signal = pyqtSignal(str)
+
+    def __init__(self,reddit_instance,subreddit,category,limit):
+        QThread.__init__(self)
+        self.reddit_instance = reddit_instance
+        self.reddit_instance.setCategory(category)
+        self.reddit_instance.setSubreddit(subreddit)
+        self.reddit_instance.setLimit(limit)
+        
+
+    # run method gets called when we start the thread
+    def run(self):
+        self.reddit_instance.nextWallpaper()
+        self.image_path = self.reddit_instance.download_path()
+        self.reddit_instance.download_wall()
+        self.signal.emit(self.image_path)
 
 
 if __name__ == "__main__":
