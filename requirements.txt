@@ -14,3 +14,4 @@ six==1.14.0
 update-checker==0.16
 urllib3==1.25.8
 websocket-client==0.57.0
+winpath==202002.2
