@@ -70,8 +70,8 @@ class DownloadThread(QThread):
     # run method gets called when we start the thread
     def run(self):
         self.reddit_instance.nextWallpaper()
-        self.image_path = self.reddit_instance.download_path()
-        self.reddit_instance.download_wall()
+        self.image_path = self.reddit_instance.downloadPath()
+        self.reddit_instance.downloadWall()
         self.signal.emit(self.image_path)
 
 

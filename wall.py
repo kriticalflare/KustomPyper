@@ -1,11 +1,14 @@
 import ctypes
 import os
+import winpath
 
-directory = os.getcwd()
+def temp_download_dir():
+    return winpath.get_local_appdata() + "\\Programs\\KustomPyper"
+
 
 def changeBG(image):
     # print(directory)
-    image_path = directory + "\\" + image
+    image_path =  image
     # print(image_path)  
    
     # Constant for setting the desktop wallpaper

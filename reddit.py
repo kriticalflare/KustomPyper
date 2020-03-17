@@ -2,6 +2,7 @@ import praw
 import requests
 import random
 import secrets
+import wall
 
 
 class Reddit:
@@ -48,19 +49,20 @@ class Reddit:
             #  pass on imgur albums for now 
             self.nextWallpaper()
 
-    def download_path(self):
+    def downloadPath(self):
         # find image extension
-        self.downloadpath = 'pic1.jpg'
+        self.download_extension = 'pic1.jpg'
 
         if 'png' in str(self.wallpaper_url):
             print('contains')
-            self.downloadpath = self.downloadpath.replace('jpg', 'png')
-            print(self.downloadpath)
-        return self.downloadpath
+            self.download_extension = self.download_extension.replace('jpg', 'png')
+            print(self.download_extension)
+        self.download_path = wall.temp_download_dir() +"\\" + self.download_extension
+        return self.download_path
             
         
-    def download_wall(self):
-        with open(self.downloadpath, 'wb') as handle:
+    def downloadWall(self):
+        with open(self.download_path, 'wb') as handle:
                 
                 response = requests.get(self.wallpaper_url, stream=True)
 
