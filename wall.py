@@ -3,7 +3,10 @@ import os
 import winpath
 
 def temp_download_dir():
-    return winpath.get_local_appdata() + "\\Programs\\KustomPyper"
+    path = winpath.get_local_appdata() + "\\Programs\\KustomPyper"
+    if not os.path.exists(path):
+        os.mkdir(path)
+    return path
 
 
 def changeBG(image):
