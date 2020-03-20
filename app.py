@@ -11,6 +11,7 @@ from gui import Ui_MainWindow
 import wall
 import reddit
 import win_darkmode
+from datetime import datetime
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -21,6 +22,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.reddit_instance = reddit.Reddit()
         self.nextWallButton.clicked.connect(self.nextWallpaper)
         self.wallpaperButton.clicked.connect(self.setWallpaper)
+        self.saveButton.clicked.connect(self.saveWallpaper)
         self.screenSize = QDesktopWidget().screenGeometry(0)
         self.setMinimumSize(self.screenSize.width(),self.screenSize.height())
         self.photo.setMaximumHeight(int(0.7 * self.screenSize.height()))
@@ -43,6 +45,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.photo.setScaledContents(True)
         self.nextWallButton.setEnabled(True)
 
+    def saveWallpaper(self):
+        if self.image_path is None:
+            messagebox = QMessageBox()
+            messagebox.setWindowTitle('Wallpaper not found!')
+            messagebox.setText('Choose a wallpaper to set')
+            messagebox.setIcon(QMessageBox.Critical)
+            messagebox.exec_()
+        else: 
+            now = datetime.now()
+            timestamp = datetime.timestamp(now)
+            timestamp = int(timestamp)
+            wall.saveWall(self.image_path, "KustomPyper_" + str(timestamp) + self.reddit_instance.getImageExtension())
+            messagebox = QMessageBox()
+            messagebox.setWindowTitle('Wallpaper saved!')
+            messagebox.setText("Wallpaper saved in User's Pictures folder")
+            messagebox.setIcon(QMessageBox.Information)
+            messagebox.exec_()
         
     def toggleDarkMode(self):
         if self.darkModeCheckBox.isChecked():

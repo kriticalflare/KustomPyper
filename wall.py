@@ -1,6 +1,7 @@
 import ctypes
 import os
 import winpath
+import shutil
 
 def temp_download_dir():
     path = winpath.get_local_appdata() + "\\Programs\\KustomPyper"
@@ -8,6 +9,12 @@ def temp_download_dir():
         os.mkdir(path)
     return path
 
+
+def saveWall(image_path,imagetitle):
+    path = winpath.get_my_pictures() + "\\KustomPyper"
+    if not os.path.exists(path):
+        os.mkdir(path)
+    shutil.copyfile(image_path, path + f'\\{imagetitle}')
 
 def changeBG(image):
     # print(directory)

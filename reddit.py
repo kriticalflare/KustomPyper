@@ -39,11 +39,12 @@ class Reddit:
         wallpaper_submissions = self.getSubmissions()
         submission_list = []
         for submission in wallpaper_submissions:
-            submission_list.append(submission.url)
+            submission_list.append(submission)
 
         random_int = random.randint(0,self.limit - 1)
         # print(random_int)
-        self.wallpaper_url = submission_list[random_int]
+        self.submission = submission_list[random_int]
+        self.wallpaper_url = submission_list[random_int].url
         print(self.wallpaper_url)
         if 'imgur.com/a/' in self.wallpaper_url or 'imgur.com/gallery/' in self.wallpaper_url:
             #  pass on imgur albums for now 
@@ -51,15 +52,25 @@ class Reddit:
 
     def downloadPath(self):
         # find image extension
-        self.download_extension = 'pic1.jpg'
+        self.download_file = 'pic1.jpg'
+        self.download_extension = '.jpg'
 
         if 'png' in str(self.wallpaper_url):
             print('contains')
-            self.download_extension = self.download_extension.replace('jpg', 'png')
+            self.download_file = self.download_file.replace('jpg', 'png')
+            self.download_extension = '.png'
             print(self.download_extension)
-        self.download_path = wall.temp_download_dir() +"\\" + self.download_extension
+        self.download_path = wall.temp_download_dir() +"\\" + self.download_file
         return self.download_path
-            
+
+    def getDownloadFile(self):
+        return self.download_file
+        
+    def getImageExtension(self):
+        return self.download_extension
+
+    def getImageTitle(self):
+        return self.submission.title
         
     def downloadWall(self):
         with open(self.download_path, 'wb') as handle:
