@@ -21,6 +21,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.reddit_instance = reddit.Reddit()
         self.nextWallButton.clicked.connect(self.nextWallpaper)
         self.wallpaperButton.clicked.connect(self.setWallpaper)
+        self.screenSize = QDesktopWidget().screenGeometry(0)
+        self.setMinimumSize(self.screenSize.width(),self.screenSize.height())
+        self.photo.setMaximumHeight(int(0.7 * self.screenSize.height()))
+        self.photo.setMaximumWidth(int(0.99 * self.screenSize.width()))
+        self.showMaximized()
 
     def nextWallpaper(self):
         self.nextWallButton.setEnabled(False)
