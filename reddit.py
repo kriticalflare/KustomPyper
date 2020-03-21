@@ -51,7 +51,7 @@ class Reddit:
         submission_list = []
         for submission in wallpaper_submissions:
             submission_list.append(submission)
-            print(submission.title)
+            # print(submission.title)
 
         random_int = random.randint(0,self.limit - 1)
         # print(random_int)

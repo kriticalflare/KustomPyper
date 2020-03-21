@@ -31,7 +31,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.showMaximized()
 
     def nextWallpaper(self):
-        self.nextWallButton.setEnabled(False)
+        self.enableWallButtons(False)
         query = self.searchTextEdit.toPlainText()
         subreddit = self.subredditComboBox.currentText()
         category = self.categoryComboBox.currentText()
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.image_path = image_path
         self.photo.setPixmap(QtGui.QPixmap(self.image_path))
         self.photo.setScaledContents(True)
-        self.nextWallButton.setEnabled(True)
+        self.enableWallButtons(True)
 
     def saveWallpaper(self):
         if self.image_path is None:
@@ -70,6 +70,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             win_darkmode.setDarkMode()
         else:
             win_darkmode.setLightMode()
+
+    def enableWallButtons(self,state):
+        self.nextWallButton.setEnabled(state)
+        self.saveButton.setEnabled(state)
+        self.wallpaperButton.setEnabled(state)
 
     def setWallpaper(self):
         if self.image_path is None:
