@@ -14,8 +14,10 @@ GUI tool to get random wallpapers from the subreddit of your choice:
 - Choose from default subreddits
 - Or even add your own!
 - Get wallpapers according to relevance
+- Search for wallpapers
 - Set the range of random posts
 - Toggle Windows dark mode from the app itself!
+- Save your favourite walls 
 
 ### Built With
 
