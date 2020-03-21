@@ -27,15 +27,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setMinimumSize(self.screenSize.width(),self.screenSize.height())
         self.photo.setMaximumHeight(int(0.7 * self.screenSize.height()))
         self.photo.setMaximumWidth(int(0.99 * self.screenSize.width()))
+        self.searchTextEdit.setMaximumWidth(int(0.15 * self.screenSize.width()))
         self.showMaximized()
 
     def nextWallpaper(self):
         self.nextWallButton.setEnabled(False)
+        query = self.searchTextEdit.toPlainText()
         subreddit = self.subredditComboBox.currentText()
         category = self.categoryComboBox.currentText()
         limit = self.limitComboBox.currentText()
         limit = int(limit)
-        self.download_thread = DownloadThread(self.reddit_instance,subreddit,category,limit)
+        self.download_thread = DownloadThread(self.reddit_instance,subreddit,category,limit,query)
         self.download_thread.signal.connect(self.displayWallpaper)
         self.download_thread.start()
 
@@ -83,12 +85,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 class DownloadThread(QThread):
     signal = pyqtSignal(str)
 
-    def __init__(self,reddit_instance,subreddit,category,limit):
+    def __init__(self,reddit_instance,subreddit,category,limit,query):
         QThread.__init__(self)
         self.reddit_instance = reddit_instance
         self.reddit_instance.setCategory(category)
         self.reddit_instance.setSubreddit(subreddit)
         self.reddit_instance.setLimit(limit)
+        if (query and not query.isspace()): 
+            self.reddit_instance.setSearchQuery(query)   
         
 
     # run method gets called when we start the thread

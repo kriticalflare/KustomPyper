@@ -11,6 +11,7 @@ class Reddit:
         self.instance = praw.Reddit(client_id=secrets.client_id,
                      client_secret=secrets.client_secret,
                      user_agent=secrets.user_agent)
+        self.query = None
 
     def setSubreddit(self,subreddit):
         self.subreddit = subreddit
@@ -20,6 +21,13 @@ class Reddit:
     
     def setLimit(self, limit):
         self.limit = limit
+
+    def setSearchQuery(self, query):
+        self.query = query
+
+    def getSearchResults(self):
+        self.wallpaper_sub = self.instance.subreddit(self.subreddit)
+        return self.wallpaper_sub.search(query=self.query,sort='top',limit = self.limit)
 
     def getSubmissions(self):
         self.wallpaper_sub = self.instance.subreddit(self.subreddit)
@@ -36,10 +44,14 @@ class Reddit:
 
     def nextWallpaper(self):
         print(self.subreddit)
-        wallpaper_submissions = self.getSubmissions()
+        if self.query != None:
+            wallpaper_submissions = self.getSearchResults()
+        else:
+            wallpaper_submissions = self.getSubmissions()
         submission_list = []
         for submission in wallpaper_submissions:
             submission_list.append(submission)
+            print(submission.title)
 
         random_int = random.randint(0,self.limit - 1)
         # print(random_int)
