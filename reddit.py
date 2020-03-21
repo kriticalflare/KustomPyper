@@ -12,6 +12,7 @@ class Reddit:
                      client_secret=secrets.client_secret,
                      user_agent=secrets.user_agent)
         self.query = None
+        self.blacklistUrl = ('imgur.com/gallery/','imgur.com/a/','v.redd.it')
 
     def setSubreddit(self,subreddit):
         self.subreddit = subreddit
@@ -58,8 +59,8 @@ class Reddit:
         self.submission = submission_list[random_int]
         self.wallpaper_url = submission_list[random_int].url
         print(self.wallpaper_url)
-        if 'imgur.com/a/' in self.wallpaper_url or 'imgur.com/gallery/' in self.wallpaper_url:
-            #  pass on imgur albums for now 
+        if any( _ in self.wallpaper_url for _ in self.blacklistUrl):
+            #  pass on blacklisted urls (ie not direct image links)
             self.nextWallpaper()
 
     def downloadPath(self):
