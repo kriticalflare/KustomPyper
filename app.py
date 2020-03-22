@@ -20,14 +20,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.screenSize = QDesktopWidget().screenGeometry(0)
         self.setMinimumSize(self.screenSize.width(),self.screenSize.height())
         self.pageRedditAction.triggered.connect(self.showRedditPage)
+        self.pageUnsplashAction.triggered.connect(self.showUnsplashPage)
         self.aboutAction.triggered.connect(self.showAboutPage)
         self.showMaximized()
 
     def showRedditPage(self):
         self.pageStackWidget.setCurrentIndex(0)
+
+    def showUnsplashPage(self):
+        self.pageStackWidget.setCurrentIndex(1)
     
     def showAboutPage(self):
-        self.pageStackWidget.setCurrentIndex(1)
+        self.pageStackWidget.setCurrentIndex(2)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
