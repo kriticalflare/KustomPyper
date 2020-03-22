@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1239, 763)
+        MainWindow.resize(1239, 776)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -94,8 +94,11 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QtWidgets.QGridLayout(self.aboutPage)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.label_2 = QtWidgets.QLabel(self.aboutPage)
+        self.label_2.setTextFormat(QtCore.Qt.RichText)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setWordWrap(True)
+        self.label_2.setOpenExternalLinks(True)
+        self.label_2.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
         self.label_2.setObjectName("label_2")
         self.gridLayout_3.addWidget(self.label_2, 0, 0, 1, 1)
         self.pageStackWidget.addWidget(self.aboutPage)
@@ -130,7 +133,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.pageStackWidget.setCurrentIndex(0)
+        self.pageStackWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -155,8 +158,7 @@ class Ui_MainWindow(object):
         self.nextWallButton.setText(_translate("MainWindow", "Next wallpaper"))
         self.saveButton.setText(_translate("MainWindow", "Save to Pictures"))
         self.wallpaperButton.setText(_translate("MainWindow", "Set as wallpaper"))
-        self.label_2.setText(_translate("MainWindow", "KustomPyper - Get amazing wallpapers for your desktop. \n"
-" Created by Kriticalflare (www.github.com/kriticalflare) "))
+        self.label_2.setText(_translate("MainWindow", "KustomPyper - Get amazing wallpapers for your desktop. <br> Created by Kriticalflare (<a href=\"https://github.com/kriticalflare\">Github</a>) </br>"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuNavigate.setTitle(_translate("MainWindow", "Navigate"))
         self.aboutAction.setText(_translate("MainWindow", "About"))
