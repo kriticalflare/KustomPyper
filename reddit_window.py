@@ -17,21 +17,21 @@ class RedditWindow():
         self.ui = main_window
         self.image_path = None
         self.reddit_instance = reddit.Reddit()
-        self.ui.nextWallButton.clicked.connect(self.nextWallpaper)
-        self.ui.wallpaperButton.clicked.connect(self.setWallpaper)
-        self.ui.saveButton.clicked.connect(self.saveWallpaper)
+        self.ui.redditNextWallButton.clicked.connect(self.nextWallpaper)
+        self.ui.redditWallpaperButton.clicked.connect(self.setWallpaper)
+        self.ui.redditSaveButton.clicked.connect(self.saveWallpaper)
         self.ui.helpAction.triggered.connect(self.openHelpUrl)
         self.screenSize = QDesktopWidget().screenGeometry(0)
-        self.ui.photo.setMaximumHeight(int(0.7 * self.screenSize.height()))
-        self.ui.photo.setMaximumWidth(int(0.99 * self.screenSize.width()))
-        self.ui.searchTextEdit.setMaximumWidth(int(0.15 * self.screenSize.width()))
+        self.ui.redditPhoto.setMaximumHeight(int(0.7 * self.screenSize.height()))
+        self.ui.redditPhoto.setMaximumWidth(int(0.99 * self.screenSize.width()))
+        self.ui.redditSearchTextEdit.setMaximumWidth(int(0.15 * self.screenSize.width()))
     
     def nextWallpaper(self):
         self.enableWallButtons(False)
-        query = self.ui.searchTextEdit.toPlainText()
-        subreddit = self.ui.subredditComboBox.currentText()
-        category = self.ui.categoryComboBox.currentText()
-        limit = self.ui.limitComboBox.currentText()
+        query = self.ui.redditSearchTextEdit.toPlainText()
+        subreddit = self.ui.redditSubredditCombo.currentText()
+        category = self.ui.redditCategoryCombo.currentText()
+        limit = self.ui.redditLimitCombo.currentText()
         limit = int(limit)
         self.download_thread = DownloadThread(self.reddit_instance,subreddit,category,limit,query)
         self.download_thread.signal.connect(self.displayWallpaper)
@@ -39,8 +39,8 @@ class RedditWindow():
 
     def displayWallpaper(self,image_path):
         self.image_path = image_path
-        self.ui.photo.setPixmap(QtGui.QPixmap(self.image_path))
-        self.ui.photo.setScaledContents(True)
+        self.ui.redditPhoto.setPixmap(QtGui.QPixmap(self.image_path))
+        self.ui.redditPhoto.setScaledContents(True)
         self.enableWallButtons(True)
 
     def saveWallpaper(self):
@@ -68,9 +68,9 @@ class RedditWindow():
             win_darkmode.setLightMode()
 
     def enableWallButtons(self,state):
-        self.ui.nextWallButton.setEnabled(state)
-        self.ui.saveButton.setEnabled(state)
-        self.ui.wallpaperButton.setEnabled(state)
+        self.ui.redditNextWallButton.setEnabled(state)
+        self.ui.redditSaveButton.setEnabled(state)
+        self.ui.redditWallpaperButton.setEnabled(state)
 
     def setWallpaper(self):
         if self.image_path is None:
