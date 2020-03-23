@@ -48,6 +48,7 @@ class Reddit:
         print(self.subreddit)
         if self.query != None:
             wallpaper_submissions = self.getSearchResults()
+            self.query = None
         else:
             wallpaper_submissions = self.getSubmissions()
         submission_list = []
