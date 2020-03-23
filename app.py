@@ -7,6 +7,7 @@ from PyQt5 import QtGui
 
 from gui import Ui_MainWindow
 import reddit_window
+import unsplash_window
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -38,5 +39,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     MainWindow = MainWindow()
     RedditWindow = reddit_window.RedditWindow(MainWindow)
+    UnsplashWindow = unsplash_window.UnsplashWindow(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
