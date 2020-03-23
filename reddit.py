@@ -8,8 +8,8 @@ import wall
 class Reddit:
     def __init__(self):
         self.instance = praw.Reddit(
-            client_id=secrets.client_id,
-            client_secret=secrets.client_secret,
+            client_id=secrets.reddit_client_id,
+            client_secret=secrets.reddit_client_secret,
             user_agent=secrets.user_agent,
         )
         self.query = None
