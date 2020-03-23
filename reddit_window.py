@@ -70,7 +70,7 @@ class RedditWindow:
             messagebox.exec_()
 
     def toggleDarkMode(self):
-        if self.ui.darkModeCheckBox.isChecked():
+        if self.ui.redditDarkModeCheck.isChecked():
             win_darkmode.setDarkMode()
         else:
             win_darkmode.setLightMode()
