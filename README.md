@@ -31,8 +31,8 @@ First of all make sure to get your own Reddit client id and secret from https://
 
 Create a ```secrets.py``` file as shown below with your own client id and secret
 ```
-client_id = '<client-id>'
-client_secret = '<client-secret>'
+reddit_client_id = '<client-id>'
+reddit_client_secret = '<client-secret>'
 user_agent = '<your-useragent>'
 ```
 
