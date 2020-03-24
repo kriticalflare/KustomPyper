@@ -1,5 +1,4 @@
 
-from datetime import datetime
 from os import path
 
 from PyQt5 import QtGui
@@ -10,6 +9,7 @@ from PyQt5.QtWidgets import *
 import unsplash
 import wall
 import win_darkmode
+import utils
 
 
 class UnsplashWindow:
@@ -51,14 +51,12 @@ class UnsplashWindow:
             messagebox.setIcon(QMessageBox.Critical)
             messagebox.exec_()
         else:
-            now = datetime.now()
-            timestamp = datetime.timestamp(now)
-            timestamp = int(timestamp)
             wall.saveWall(
                 self.image_path,
-                "KustomPyper_"
-                + str(timestamp)
-                + self.unsplash_instance.get_image_extension(),
+                utils.Helpers.saved_wall_path(
+                    self.image_path, 
+                    self.unsplash_instance.get_image_extension()
+                    )
             )
             messagebox = QMessageBox()
             messagebox.setWindowTitle("Wallpaper saved!")
@@ -108,5 +106,5 @@ class UnsplashDownloadThread(QThread):
         self.unsplash_instance.get_unsplash_pic()
         print(self.unsplash_instance.wallpaper_url)
         self.image_path = self.unsplash_instance.get_download_path()
-        self.unsplash_instance.download_wall()
+        utils.Helpers.download_wall(self.image_path,self.unsplash_instance.wallpaper_url)
         self.signal.emit(self.image_path)

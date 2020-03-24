@@ -4,6 +4,7 @@ import wall
 
 import urllib.parse
 
+
 class Unsplash:
     def __init__(self, width, height):
         self.BASE_URL = "https://source.unsplash.com"
@@ -55,18 +56,3 @@ class Unsplash:
         if response.status_code == 200:
             self.wallpaper_url = response.url
             print(f"wallpaper_url : {self.wallpaper_url}")
-
-    def download_wall(self):
-        with open(self.download_path, "wb") as handle:
-
-            response = requests.get(self.wallpaper_url, stream=True)
-
-            if not response.ok:
-                print(response)
-
-            for block in response.iter_content(1024):
-                if not block:
-                    break
-
-                handle.write(block)
-

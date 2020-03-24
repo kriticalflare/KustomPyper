@@ -1,4 +1,3 @@
-from datetime import datetime
 from os import path
 
 from PyQt5 import QtGui
@@ -9,6 +8,7 @@ from PyQt5.QtWidgets import *
 import reddit
 import wall
 import win_darkmode
+import utils
 
 
 class RedditWindow:
@@ -54,14 +54,11 @@ class RedditWindow:
             messagebox.setIcon(QMessageBox.Critical)
             messagebox.exec_()
         else:
-            now = datetime.now()
-            timestamp = datetime.timestamp(now)
-            timestamp = int(timestamp)
             wall.saveWall(
                 self.image_path,
-                "KustomPyper_"
-                + str(timestamp)
-                + self.reddit_instance.getImageExtension(),
+                utils.Helpers.saved_wall_path(
+                    self.image_path, self.reddit_instance.getImageExtension()
+                )
             )
             messagebox = QMessageBox()
             messagebox.setWindowTitle("Wallpaper saved!")
@@ -117,5 +114,5 @@ class DownloadThread(QThread):
     def run(self):
         self.reddit_instance.nextWallpaper()
         self.image_path = self.reddit_instance.downloadPath()
-        self.reddit_instance.downloadWall()
+        utils.Helpers.download_wall(self.image_path, self.reddit_instance.wallpaper_url)
         self.signal.emit(self.image_path)

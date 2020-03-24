@@ -86,17 +86,3 @@ class Reddit:
 
     def getImageTitle(self):
         return self.submission.title
-
-    def downloadWall(self):
-        with open(self.download_path, "wb") as handle:
-
-            response = requests.get(self.wallpaper_url, stream=True)
-
-            if not response.ok:
-                print(response)
-
-            for block in response.iter_content(1024):
-                if not block:
-                    break
-
-                handle.write(block)
