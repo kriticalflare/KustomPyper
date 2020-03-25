@@ -19,7 +19,6 @@ class RedditWindow:
         self.ui.redditNextWallButton.clicked.connect(self.next_wallpaper)
         self.ui.redditWallpaperButton.clicked.connect(self.set_wallpaper)
         self.ui.redditSaveButton.clicked.connect(self.save_wallpaper)
-        self.ui.helpAction.triggered.connect(self.openHelpUrl)
         self.screenSize = QDesktopWidget().screenGeometry(0)
         self.ui.redditPhoto.setMaximumHeight(int(0.7 * self.screenSize.height()))
         self.ui.redditPhoto.setMaximumWidth(int(0.99 * self.screenSize.width()))
@@ -87,15 +86,6 @@ class RedditWindow:
         else:
             self.toggle_darkmode()
             wall.changeBG(self.image_path)
-
-    def openHelpUrl(self):
-        url = QUrl("https://github.com/kriticalflare/KustomPyper/blob/master/README.md")
-        if not QtGui.QDesktopServices.openUrl(url):
-            QMessageBox.warning(
-                self,
-                "Open Url",
-                "Could not open https://github.com/kriticalflare/KustomPyper/",
-            )
 
 
 class DownloadThread(QThread):
