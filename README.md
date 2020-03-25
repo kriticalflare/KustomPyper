@@ -1,5 +1,5 @@
 # KustomPyper
-### Get amazing wallpapers from reddit and unsplash for your Desktop
+### Get amazing wallpapers from reddit, unsplash and bing for your Desktop
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![issues](https://img.shields.io/github/issues/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/issues)
 [![forks](https://img.shields.io/github/forks/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/network/members)
@@ -10,7 +10,7 @@
 <img  src="https://user-images.githubusercontent.com/42350771/76681229-dd84c100-6616-11ea-9266-5fa8ab6e20f1.gif" height="280">
 
 
-GUI tool to get random wallpapers from the subreddit of your choice:
+GUI tool to get random wallpapers:
 
 - Choose from default subreddits
 - Or even add your own!
@@ -18,6 +18,7 @@ GUI tool to get random wallpapers from the subreddit of your choice:
 - Search for wallpapers
 - Find wallpapers featured by unsplash
 - Set the range of random posts
+- Get the wallpapers of the day from bing
 - Toggle Windows dark mode from the app itself!
 - Save your favourite walls 
 
@@ -64,6 +65,9 @@ One can also build the project by
  
 ## Supported Platforms
 - Windows 10 1809 and later
+
+## API Key Requirements
+- Only reddit requires your own reddit api keys, bing and unsplash dont require keys.
 
 ## Contributing
 
