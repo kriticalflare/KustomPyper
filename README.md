@@ -1,10 +1,11 @@
 # KustomPyper
-### Get amazing wallpapers from reddit for your Desktop
+### Get amazing wallpapers from reddit and unsplash for your Desktop
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![issues](https://img.shields.io/github/issues/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/issues)
 [![forks](https://img.shields.io/github/forks/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/network/members)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![GitHub stars](https://img.shields.io/github/stars/kriticalflare/KustomPyper.svg?style=social&label=Star&cacheSeconds=3600)](https://GitHub.com/kriticalflare/KustomPyper/stargazers/)
+[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 <img  src="https://user-images.githubusercontent.com/42350771/76681229-dd84c100-6616-11ea-9266-5fa8ab6e20f1.gif" height="280">
 
@@ -15,6 +16,7 @@ GUI tool to get random wallpapers from the subreddit of your choice:
 - Or even add your own!
 - Get wallpapers according to relevance
 - Search for wallpapers
+- Find wallpapers featured by unsplash
 - Set the range of random posts
 - Toggle Windows dark mode from the app itself!
 - Save your favourite walls 
@@ -58,7 +60,7 @@ One can also build the project by
 ``` 
  python setup.py bdist_msi
 ```
- You will find an executable installer in the ```KustomPyper\dist``` folder that can be used to install KustomPyper on the supported platforms
+ You will find an executable installer in the ```KustomPyper\src\dist``` folder that can be used to install KustomPyper on the supported platforms
  
 ## Supported Platforms
 - Windows 10 1809 and later
