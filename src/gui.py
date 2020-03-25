@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'basic_unsplash.u.ui'
+# Form implementation generated from reading ui file 'F:\PythonProjects\KustomPyper\ui\basic_bing.u.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1239, 776)
+        MainWindow.resize(1239, 777)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -135,6 +135,44 @@ class Ui_MainWindow(object):
         self.unsplashFeaturedCheck.setObjectName("unsplashFeaturedCheck")
         self.gridLayout_4.addWidget(self.unsplashFeaturedCheck, 2, 3, 1, 1)
         self.pageStackWidget.addWidget(self.unsplashPage)
+        self.bingPage = QtWidgets.QWidget()
+        self.bingPage.setObjectName("bingPage")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.bingPage)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.bingPhoto = QtWidgets.QLabel(self.bingPage)
+        self.bingPhoto.setEnabled(True)
+        self.bingPhoto.setScaledContents(False)
+        self.bingPhoto.setAlignment(QtCore.Qt.AlignCenter)
+        self.bingPhoto.setObjectName("bingPhoto")
+        self.gridLayout_5.addWidget(self.bingPhoto, 0, 0, 1, 4)
+        spacerItem2 = QtWidgets.QSpacerItem(871, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem2, 1, 0, 1, 1)
+        self.bingCountryLabel = QtWidgets.QLabel(self.bingPage)
+        self.bingCountryLabel.setObjectName("bingCountryLabel")
+        self.gridLayout_5.addWidget(self.bingCountryLabel, 1, 1, 1, 1)
+        self.bingDarkModeLabel = QtWidgets.QLabel(self.bingPage)
+        self.bingDarkModeLabel.setObjectName("bingDarkModeLabel")
+        self.gridLayout_5.addWidget(self.bingDarkModeLabel, 2, 1, 1, 1)
+        self.bingDarkModeCheck = QtWidgets.QCheckBox(self.bingPage)
+        self.bingDarkModeCheck.setText("")
+        self.bingDarkModeCheck.setObjectName("bingDarkModeCheck")
+        self.gridLayout_5.addWidget(self.bingDarkModeCheck, 2, 2, 1, 1)
+        self.bingNextWallButton = QtWidgets.QPushButton(self.bingPage)
+        self.bingNextWallButton.setObjectName("bingNextWallButton")
+        self.gridLayout_5.addWidget(self.bingNextWallButton, 3, 1, 1, 1)
+        self.bingSaveButton = QtWidgets.QPushButton(self.bingPage)
+        self.bingSaveButton.setObjectName("bingSaveButton")
+        self.gridLayout_5.addWidget(self.bingSaveButton, 3, 2, 1, 1)
+        self.bingWallpaperButton = QtWidgets.QPushButton(self.bingPage)
+        self.bingWallpaperButton.setObjectName("bingWallpaperButton")
+        self.gridLayout_5.addWidget(self.bingWallpaperButton, 3, 3, 1, 1)
+        self.bingCountryCombo = QtWidgets.QComboBox(self.bingPage)
+        self.bingCountryCombo.setObjectName("bingCountryCombo")
+        self.bingCountryCombo.addItem("")
+        self.bingCountryCombo.addItem("")
+        self.bingCountryCombo.addItem("")
+        self.gridLayout_5.addWidget(self.bingCountryCombo, 1, 2, 1, 2)
+        self.pageStackWidget.addWidget(self.bingPage)
         self.aboutPage = QtWidgets.QWidget()
         self.aboutPage.setObjectName("aboutPage")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.aboutPage)
@@ -174,15 +212,18 @@ class Ui_MainWindow(object):
         self.pageRedditAction.setObjectName("pageRedditAction")
         self.pageUnsplashAction = QtWidgets.QAction(MainWindow)
         self.pageUnsplashAction.setObjectName("pageUnsplashAction")
+        self.pageBingAction = QtWidgets.QAction(MainWindow)
+        self.pageBingAction.setObjectName("pageBingAction")
         self.menuHelp.addAction(self.aboutAction)
         self.menuHelp.addAction(self.helpAction)
         self.menuNavigate.addAction(self.pageRedditAction)
         self.menuNavigate.addAction(self.pageUnsplashAction)
+        self.menuNavigate.addAction(self.pageBingAction)
         self.menubar.addAction(self.menuNavigate.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.pageStackWidget.setCurrentIndex(1)
+        self.pageStackWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -214,6 +255,15 @@ class Ui_MainWindow(object):
         self.unsplashNextWallButton.setText(_translate("MainWindow", "Next wallpaper"))
         self.unsplashSaveButton.setText(_translate("MainWindow", "Save to Pictures"))
         self.unsplashWallpaperButton.setText(_translate("MainWindow", "Set as wallpaper"))
+        self.bingPhoto.setText(_translate("MainWindow", "Set the wallpaper of the day from Bing!"))
+        self.bingCountryLabel.setText(_translate("MainWindow", "Country:"))
+        self.bingDarkModeLabel.setText(_translate("MainWindow", "Dark Mode :"))
+        self.bingNextWallButton.setText(_translate("MainWindow", "Next wallpaper"))
+        self.bingSaveButton.setText(_translate("MainWindow", "Save to Pictures"))
+        self.bingWallpaperButton.setText(_translate("MainWindow", "Set as wallpaper"))
+        self.bingCountryCombo.setItemText(0, _translate("MainWindow", "India"))
+        self.bingCountryCombo.setItemText(1, _translate("MainWindow", "US"))
+        self.bingCountryCombo.setItemText(2, _translate("MainWindow", "China"))
         self.aboutLabel.setText(_translate("MainWindow", "KustomPyper - Get amazing wallpapers for your desktop. <br> Created by Kriticalflare (<a href=\"https://github.com/kriticalflare\">Github</a>) </br>"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuNavigate.setTitle(_translate("MainWindow", "Navigate"))
@@ -223,13 +273,4 @@ class Ui_MainWindow(object):
         self.redditPageAction.setText(_translate("MainWindow", "Reddit"))
         self.pageRedditAction.setText(_translate("MainWindow", "Reddit Walls"))
         self.pageUnsplashAction.setText(_translate("MainWindow", "Unsplash Walls"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        self.pageBingAction.setText(_translate("MainWindow", "Bing Walls"))

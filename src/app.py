@@ -8,6 +8,7 @@ from PyQt5 import QtGui
 from gui import Ui_MainWindow
 import reddit_window
 import unsplash_window
+import bing_window
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -22,6 +23,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setMinimumSize(self.screenSize.width(), self.screenSize.height())
         self.pageRedditAction.triggered.connect(self.show_reddit_page)
         self.pageUnsplashAction.triggered.connect(self.show_unsplash_page)
+        self.pageBingAction.triggered.connect(self.show_bing_page)
         self.aboutAction.triggered.connect(self.show_about_page)
         self.helpAction.triggered.connect(self.open_help_url)
         self.showMaximized()
@@ -32,8 +34,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def show_unsplash_page(self):
         self.pageStackWidget.setCurrentIndex(1)
 
-    def show_about_page(self):
+    def show_bing_page(self):
         self.pageStackWidget.setCurrentIndex(2)
+
+    def show_about_page(self):
+        self.pageStackWidget.setCurrentIndex(3)
 
     def open_help_url(self):
         url = QUrl("https://github.com/kriticalflare/KustomPyper/blob/master/README.md")
@@ -44,10 +49,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 "Could not open https://github.com/kriticalflare/KustomPyper/",
             )
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     MainWindow = MainWindow()
     RedditWindow = reddit_window.RedditWindow(MainWindow)
     UnsplashWindow = unsplash_window.UnsplashWindow(MainWindow)
+    BingWindow = bing_window.BingWindow(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
