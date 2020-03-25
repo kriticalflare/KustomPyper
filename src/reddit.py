@@ -15,23 +15,23 @@ class Reddit:
         self.query = None
         self.blacklistUrl = ("imgur.com/gallery/", "imgur.com/a/", "v.redd.it")
 
-    def setSubreddit(self, subreddit):
+    def set_subreddit(self, subreddit):
         self.subreddit = subreddit
 
-    def setCategory(self, category):
+    def set_category(self, category):
         self.category = category
 
-    def setLimit(self, limit):
+    def set_limit(self, limit):
         self.limit = limit
 
-    def setSearchQuery(self, query):
+    def set_search_query(self, query):
         self.query = query
 
-    def getSearchResults(self):
+    def get_search_results(self):
         self.wallpaper_sub = self.instance.subreddit(self.subreddit)
         return self.wallpaper_sub.search(query=self.query, sort="top", limit=self.limit)
 
-    def getSubmissions(self):
+    def get_submissions(self):
         self.wallpaper_sub = self.instance.subreddit(self.subreddit)
         if self.category == "hot":
             return self.wallpaper_sub.hot(limit=self.limit)
@@ -44,13 +44,13 @@ class Reddit:
         elif self.category == "rising":
             return self.wallpaper_sub.rising(limit=self.limit)
 
-    def nextWallpaper(self):
+    def next_wallpaper(self):
         print(self.subreddit)
         if self.query != None:
-            wallpaper_submissions = self.getSearchResults()
+            wallpaper_submissions = self.get_search_results()
             self.query = None
         else:
-            wallpaper_submissions = self.getSubmissions()
+            wallpaper_submissions = self.get_submissions()
         submission_list = []
         for submission in wallpaper_submissions:
             submission_list.append(submission)
@@ -63,9 +63,9 @@ class Reddit:
         print(self.wallpaper_url)
         if any(_ in self.wallpaper_url for _ in self.blacklistUrl):
             #  pass on blacklisted urls (ie not direct image links)
-            self.nextWallpaper()
+            self.next_wallpaper()
 
-    def downloadPath(self):
+    def get_download_path(self):
         # find image extension
         self.download_file = "pic1.jpg"
         self.download_extension = ".jpg"
@@ -78,11 +78,11 @@ class Reddit:
         self.download_path = wall.temp_download_dir() + "\\" + self.download_file
         return self.download_path
 
-    def getDownloadFile(self):
+    def get_download_file(self):
         return self.download_file
 
-    def getImageExtension(self):
+    def get_image_extension(self):
         return self.download_extension
 
-    def getImageTitle(self):
+    def get_image_title(self):
         return self.submission.title
