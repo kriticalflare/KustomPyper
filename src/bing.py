@@ -10,6 +10,7 @@ class Bing:
         self.WALL_API_URL = "http://www.bing.com//HPImageArchive.aspx?format=js&idx=0&n=8&mkt=en-{country}"
         self.headers = {"user-agent": secrets.user_agent}
         self.country = "init"
+        self.limit = 0
 
     def set_country(self, country):
         if (self.country != country) or (self.country == "init"):
@@ -29,13 +30,17 @@ class Bing:
 
     def get_wallpapers(self):
         url = self.url_builder()
-        print(url)
+        # print(url)
         response = requests.get(url, headers=self.headers)
         if response.status_code == 200:
+            for image in response.json()["images"]:
+                self.limit += 1
+
             if self.country_specific_wall:
                 self.random_index = 0
             else:
-                self.random_index = random.randint(1, 7)
+                self.random_index = random.randint(1, self.limit - 1)
+
             self.wallpaper_url = (
                 self.BASE_URL + response.json()["images"][self.random_index]["url"]
             )
