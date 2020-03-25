@@ -135,3 +135,7 @@ Venv/
 pic1.*
 basic.u.ui
 basic*
+ui/
+src/build/
+src/__pycache__/
+src/dist/
