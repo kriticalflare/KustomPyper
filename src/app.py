@@ -9,7 +9,7 @@ from gui import Ui_MainWindow
 import reddit_window
 import unsplash_window
 import bing_window
-
+import wallhaven_window
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -24,6 +24,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pageRedditAction.triggered.connect(self.show_reddit_page)
         self.pageUnsplashAction.triggered.connect(self.show_unsplash_page)
         self.pageBingAction.triggered.connect(self.show_bing_page)
+        self.pageWallHavenAction.triggered.connect(self.show_wallhaven_page)
         self.aboutAction.triggered.connect(self.show_about_page)
         self.helpAction.triggered.connect(self.open_help_url)
         self.showMaximized()
@@ -36,9 +37,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def show_bing_page(self):
         self.pageStackWidget.setCurrentIndex(2)
+    
+    def show_wallhaven_page(self):
+        self.pageStackWidget.setCurrentIndex(3)
 
     def show_about_page(self):
-        self.pageStackWidget.setCurrentIndex(3)
+        self.pageStackWidget.setCurrentIndex(4)
 
     def open_help_url(self):
         url = QUrl("https://github.com/kriticalflare/KustomPyper/blob/master/README.md")
@@ -56,5 +60,6 @@ if __name__ == "__main__":
     RedditWindow = reddit_window.RedditWindow(MainWindow)
     UnsplashWindow = unsplash_window.UnsplashWindow(MainWindow)
     BingWindow = bing_window.BingWindow(MainWindow)
+    WallhaveWindow = wallhaven_window.WallhavenWindow(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
