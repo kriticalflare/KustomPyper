@@ -33,7 +33,7 @@ GUI tool to get random wallpapers:
 
 First of all make sure to get your own set of api keys as mentioned [here](#api-key-requirements).
 
-Create a ```secrets.py``` file as shown below with your own client id and secret
+Create a ```secrets.py``` file inside ```KustomPyper\src``` folder as shown below 
 ```
 reddit_client_id = '<client-id>'
 reddit_client_secret = '<client-secret>'
