@@ -1,5 +1,5 @@
 # KustomPyper
-### Get amazing wallpapers from reddit, unsplash and bing for your Desktop
+### Get amazing wallpapers from reddit, unsplash , wallhaven and bing for your Desktop
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![issues](https://img.shields.io/github/issues/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/issues)
 [![forks](https://img.shields.io/github/forks/kriticalflare/KustomPyper)](https://github.com/kriticalflare/KustomPyper/network/members)
@@ -17,6 +17,7 @@ GUI tool to get random wallpapers:
 - Get wallpapers according to relevance
 - Search for wallpapers
 - Find wallpapers featured by unsplash
+- find the best anime walls from wallhaven
 - Set the range of random posts
 - Get the wallpapers of the day from bing
 - Toggle Windows dark mode from the app itself!
@@ -30,13 +31,14 @@ GUI tool to get random wallpapers:
 
 ## Getting Started
 
-First of all make sure to get your own Reddit client id and secret from https://old.reddit.com/prefs/apps/.
+First of all make sure to get your own set of api keys as mentioned [here](#api-key-requirements).
 
 Create a ```secrets.py``` file as shown below with your own client id and secret
 ```
 reddit_client_id = '<client-id>'
 reddit_client_secret = '<client-secret>'
 user_agent = '<your-useragent>'
+wallhaven_api_key = '<your-wallhaven-api-key>'
 ```
 
 Now make sure you have installed all the required dependencies, preferrably in a virtual environment.
@@ -67,7 +69,10 @@ One can also build the project by
 - Windows 10 1809 and later
 
 ## API Key Requirements
-- Only reddit requires your own reddit api keys, bing and unsplash dont require keys.
+- reddit and wallhaven require your own api keys
+  - [reddit](https://old.reddit.com/prefs/apps/)
+  - [wallhaven](https://wallhaven.cc/settings/account)
+- bing and unsplash dont require keys as of now
 
 ## Contributing
 
