@@ -10,6 +10,7 @@ class Bing:
         self.WALL_API_URL = "http://www.bing.com//HPImageArchive.aspx?format=js&idx=0&n=8&mkt=en-{country}"
         self.headers = {"user-agent": secrets.user_agent}
         self.country = "init"
+        self.prev_wall = ""
 
     def set_country(self, country):
         if (self.country != country) or (self.country == "init"):
@@ -44,6 +45,10 @@ class Bing:
             self.wallpaper_url = (
                 self.BASE_URL + response.json()["images"][self.random_index]["url"]
             )
+            
+            if (self.prev_wall == self.wallpaper_url) and (not self.country_specific_wall):
+                self.get_wallpapers()
+            self.prev_wall = self.wallpaper_url
             print(self.wallpaper_url)
 
     def get_download_path(self):
@@ -55,7 +60,7 @@ class Bing:
             self.download_extension = ".png"
 
         self.download_path = wall.temp_download_dir() + "\\" + self.download_file
-        print(self.download_path)
+        # print(self.download_path)
         return self.download_path
 
     def get_image_extension(self):

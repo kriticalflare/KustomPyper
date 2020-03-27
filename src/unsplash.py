@@ -12,6 +12,7 @@ class Unsplash:
         self.height = height
         self.query = None
         self.headers = {"user-agent": secrets.user_agent}
+        self.prev_wall = ""
 
     def set_featured(self, state):
         if state:
@@ -56,3 +57,6 @@ class Unsplash:
         if response.status_code == 200:
             self.wallpaper_url = response.url
             print(f"wallpaper_url : {self.wallpaper_url}")
+            if self.prev_wall == self.wallpaper_url:
+                self.get_unsplash_pic()
+            self.prev_wall = self.wallpaper_url

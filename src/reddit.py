@@ -13,6 +13,7 @@ class Reddit:
             user_agent=secrets.user_agent,
         )
         self.query = None
+        self.prev_wall = ""
         self.blacklistUrl = ("imgur.com/gallery/", "imgur.com/a/", "v.redd.it")
 
     def set_subreddit(self, subreddit):
@@ -64,6 +65,9 @@ class Reddit:
         if any(_ in self.wallpaper_url for _ in self.blacklistUrl):
             #  pass on blacklisted urls (ie not direct image links)
             self.next_wallpaper()
+        if self.prev_wall == self.wallpaper_url:
+            self.next_wallpaper()
+        self.prev_wall = self.wallpaper_url
 
     def get_download_path(self):
         # find image extension

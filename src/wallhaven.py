@@ -10,6 +10,7 @@ class Wallhaven:
         self.__BASE_URL = "https://wallhaven.cc/api/v1/search"
         self._width = str(width)
         self._height = str(height)
+        self._prev_wall = ""
 
     def _build_headers(self):
         headers = {
@@ -83,6 +84,9 @@ class Wallhaven:
             print(index)
             image = response.json()["data"][index]
             self._wallpaper_url = image["path"]
+            if self._prev_wall == self._wallpaper_url:
+                self.wallpapers()
+            self._prev_wall =  self._wallpaper_url
             print(self._wallpaper_url)
             self._image_extension = image["file_type"].replace("image/", ".")
             # print(self._image_extension)
