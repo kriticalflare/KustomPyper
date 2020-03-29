@@ -21,6 +21,7 @@ GUI tool to get random wallpapers:
 - Set the range of random posts
 - Get the wallpapers of the day from bing
 - Toggle Windows dark mode from the app itself!
+- Keep track of the wallpapers you have set before
 - Save your favourite walls 
 
 ### Built With
