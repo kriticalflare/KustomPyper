@@ -1,5 +1,6 @@
 from datetime import datetime
 import requests
+import sqlite3
 
 
 class Helpers:
@@ -24,3 +25,20 @@ class Helpers:
         timestamp = datetime.timestamp(now)
         timestamp = str(int(timestamp))
         return "KustomPyper_" + timestamp + image_extension
+
+    @staticmethod
+    def insert_history(wallpaper_url, source):
+        try:
+            conn = sqlite3.connect("wall_history.db")
+            c = conn.cursor()
+            c.execute(
+                "INSERT OR IGNORE INTO history (wallpaper,source) VALUES (?,?)",
+                (wallpaper_url, source),
+            )
+            conn.commit()
+            c.close()
+            conn.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False

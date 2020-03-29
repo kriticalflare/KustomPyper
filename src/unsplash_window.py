@@ -74,6 +74,8 @@ class UnsplashWindow:
         else:
             self.toggle_dark_mode()
             wall.changeBG(self.image_path)
+            if not utils.Helpers.insert_history(self.unsplash_instance.wallpaper_url, "unsplash"):
+                QMessageBox.warning(QMessageBox(), 'Error', 'Could not add wall to the history.')
 
     def display_wallpaper(self, image_path):
         self.image_path = image_path

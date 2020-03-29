@@ -86,6 +86,8 @@ class RedditWindow:
         else:
             self.toggle_darkmode()
             wall.changeBG(self.image_path)
+            if not utils.Helpers.insert_history(self.reddit_instance.wallpaper_url, "reddit"):
+                QMessageBox.warning(QMessageBox(), 'Error', 'Could not add wall to the history.')
 
 
 class DownloadThread(QThread):
