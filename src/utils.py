@@ -1,6 +1,7 @@
 from datetime import datetime
 import requests
 import sqlite3
+import wall
 
 
 class Helpers:
@@ -29,7 +30,7 @@ class Helpers:
     @staticmethod
     def insert_history(wallpaper_url, source):
         try:
-            conn = sqlite3.connect("wall_history.db")
+            conn = sqlite3.connect(wall.history_db_dir("wall_history"))
             c = conn.cursor()
             c.execute(
                 "INSERT OR IGNORE INTO history (wallpaper,source) VALUES (?,?)",

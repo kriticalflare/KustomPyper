@@ -139,3 +139,4 @@ ui/
 src/build/
 src/__pycache__/
 src/dist/
+*.db

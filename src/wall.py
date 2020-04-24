@@ -11,6 +11,12 @@ def temp_download_dir():
     return path
 
 
+def history_db_dir(db_name):
+    path = temp_download_dir() + f"\\{db_name}.db"
+    # print(path)
+    return path
+
+
 def saveWall(image_path, imagetitle):
     path = winpath.get_my_pictures() + "\\KustomPyper"
     if not os.path.exists(path):

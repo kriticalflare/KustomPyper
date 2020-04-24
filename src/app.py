@@ -12,7 +12,7 @@ import unsplash_window
 import bing_window
 import wallhaven_window
 import history_window
-
+import wall
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -62,7 +62,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             )
 
     def init_history_db(self):
-        conn = sqlite3.connect("wall_history.db")
+        conn = sqlite3.connect(wall.history_db_dir("wall_history"))
         c = conn.cursor()
         c.execute(
             "CREATE TABLE IF NOT EXISTS history(wallpaper TEXT PRIMARY KEY,source TEXT)"

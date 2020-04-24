@@ -4,6 +4,7 @@ from PyQt5 import QtGui
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import wall
 
 
 class HistoryWindow:
@@ -16,7 +17,7 @@ class HistoryWindow:
 
     def clear_history(self):
         try:
-            conn = sqlite3.connect("wall_history.db")
+            conn = sqlite3.connect(wall.history_db_dir("wall_history"))
             c = conn.cursor()
             c.execute("DELETE FROM history ")
             conn.commit()
@@ -25,11 +26,11 @@ class HistoryWindow:
             self.refresh_history()
         except Exception:
             QMessageBox.warning(
-                QMessageBox(), "Error", "Could not add wall to the history."
+                QMessageBox(), "Error", "Could not clear wall from history."
             )
 
     def refresh_history(self):
-        connection = sqlite3.connect("wall_history.db")
+        connection = sqlite3.connect(wall.history_db_dir("wall_history"))
         query = "SELECT * FROM history"
         result = connection.execute(query)
         self.tableWidget.setRowCount(0)
