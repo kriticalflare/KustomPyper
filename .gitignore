@@ -132,9 +132,6 @@ dmypy.json
 secrets.py
 Venv/
 .vscode
-pic1.*
-basic.u.ui
-basic*
 ui/
 src/build/
 src/__pycache__/
