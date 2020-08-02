@@ -382,7 +382,7 @@ class Ui_MainWindow(object):
         self.whSortLabel.setText(_translate("MainWindow", "Sort Criteria:"))
         self.whSortCombo.setItemText(0, _translate("MainWindow", "random"))
         self.whSortCombo.setItemText(1, _translate("MainWindow", "favorites"))
-        self.whSortCombo.setItemText(2, _translate("MainWindow", "top_list"))
+        self.whSortCombo.setItemText(2, _translate("MainWindow", "toplist"))
         self.whSortCombo.setItemText(3, _translate("MainWindow", "relevance"))
         self.whSortCombo.setItemText(4, _translate("MainWindow", "views"))
         self.whSortCombo.setItemText(5, _translate("MainWindow", "date_added"))
