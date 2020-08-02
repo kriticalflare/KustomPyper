@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1239</width>
+    <height>777</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="pageStackWidget">
+      <property name="currentIndex">
+       <number>5</number>
+      </property>
+      <widget class="QWidget" name="redditPage">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="2" column="3">
+         <widget class="QComboBox" name="redditSubredditCombo">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>wallpapers</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>amoledbackgrounds</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="redditLimitLabel">
+          <property name="text">
+           <string>Limit :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="redditSubredditLabel">
+          <property name="text">
+           <string>Subreddit : </string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="4">
+         <widget class="QLabel" name="redditPhoto">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Set a random wallpaper from reddit!</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <spacer name="redditHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>784</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLabel" name="redditCategoryLabel">
+          <property name="text">
+           <string>Category :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QComboBox" name="redditLimitCombo">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>25</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>50</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="redditDarkModelabel">
+          <property name="text">
+           <string>Dark Mode :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="2">
+         <widget class="QPushButton" name="redditSaveButton">
+          <property name="text">
+           <string>Save to Pictures</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QPushButton" name="redditNextWallButton">
+          <property name="text">
+           <string>Next wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QTextEdit" name="redditSearchTextEdit">
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="acceptRichText">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QCheckBox" name="redditDarkModeCheck">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="3">
+         <widget class="QPushButton" name="redditWallpaperButton">
+          <property name="text">
+           <string>Set as wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QComboBox" name="redditCategoryCombo">
+          <item>
+           <property name="text">
+            <string>hot</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>rising</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>new</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>top</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>controversial</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="redditSearchLabel">
+          <property name="text">
+           <string>Search:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="unsplashPage">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0" colspan="4">
+         <widget class="QLabel" name="unsplashPhoto">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Set a random wallpaper from Unsplash!</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="unsplashSearchLabel">
+          <property name="text">
+           <string>Search:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QTextEdit" name="unsplashSearchTextEdit">
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="acceptRichText">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <spacer name="unsplashHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>752</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="unsplashFeaturedLabel">
+          <property name="text">
+           <string>Featured :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLabel" name="unsplashDarkModeLabel">
+          <property name="text">
+           <string>Dark Mode :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QCheckBox" name="unsplashDarkModeCheck">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="unsplashNextWallButton">
+          <property name="text">
+           <string>Next wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QPushButton" name="unsplashSaveButton">
+          <property name="text">
+           <string>Save to Pictures</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QPushButton" name="unsplashWallpaperButton">
+          <property name="text">
+           <string>Set as wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QCheckBox" name="unsplashFeaturedCheck">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="bingPage">
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0" colspan="4">
+         <widget class="QLabel" name="bingPhoto">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Set the wallpaper of the day from Bing!</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="bingHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>871</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="bingCountryLabel">
+          <property name="text">
+           <string>Country:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="bingDarkModeLabel">
+          <property name="text">
+           <string>Dark Mode :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="bingDarkModeCheck">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="bingNextWallButton">
+          <property name="text">
+           <string>Next wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="bingSaveButton">
+          <property name="text">
+           <string>Save to Pictures</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QPushButton" name="bingWallpaperButton">
+          <property name="text">
+           <string>Set as wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" colspan="2">
+         <widget class="QComboBox" name="bingCountryCombo">
+          <item>
+           <property name="text">
+            <string>India</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>US</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>China</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="wallhavenPage">
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0" colspan="5">
+         <widget class="QLabel" name="whPhoto">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Set a random wallpaper from Walhaven!</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="whSearchLabel">
+          <property name="text">
+           <string>Search:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="whCategoriesLabel">
+          <property name="text">
+           <string>Categories:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="whGeneralCheck">
+          <property name="text">
+           <string>General</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QCheckBox" name="whAnimeCheck">
+          <property name="text">
+           <string>Anime</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <widget class="QCheckBox" name="whPeopleCheck">
+          <property name="text">
+           <string>People</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="whSfwCheck">
+          <property name="text">
+           <string>sfw</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QCheckBox" name="whSketchyCheck">
+          <property name="text">
+           <string>sketchy</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QCheckBox" name="whNsfwCheck">
+          <property name="text">
+           <string>nsfw</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <spacer name="whHorizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>780</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="whSortLabel">
+          <property name="text">
+           <string>Sort Criteria:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QComboBox" name="whSortCombo">
+          <item>
+           <property name="text">
+            <string>random</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>favorites</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>top_list</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>relevance</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>views</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>date_added</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="whDarkModelabel">
+          <property name="text">
+           <string>Dark Mode :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QCheckBox" name="whDarkModeCheck">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="2">
+         <widget class="QPushButton" name="whNextWallButton">
+          <property name="text">
+           <string>Next wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="3">
+         <widget class="QPushButton" name="whSaveButton">
+          <property name="text">
+           <string>Save to Pictures</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="4">
+         <widget class="QPushButton" name="whWallpaperButton">
+          <property name="text">
+           <string>Set as wallpaper</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" colspan="3">
+         <widget class="QTextEdit" name="whSearchTextEdit">
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="acceptRichText">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="aboutPage">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="aboutLabel">
+          <property name="text">
+           <string>KustomPyper - Get amazing wallpapers for your desktop. &lt;br&gt; Created by Kriticalflare (&lt;a href=&quot;https://github.com/kriticalflare&quot;&gt;Github&lt;/a&gt;) &lt;/br&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="openExternalLinks">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextBrowserInteraction</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="historyPage">
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0" colspan="3">
+         <widget class="QTableWidget" name="historyTableWidget">
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>wallpaper</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>source</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>992</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="historyRefreshButton">
+          <property name="text">
+           <string>Refresh </string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="historyClearButton">
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1239</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="aboutAction"/>
+    <addaction name="helpAction"/>
+   </widget>
+   <widget class="QMenu" name="menuNavigate">
+    <property name="title">
+     <string>Navigate</string>
+    </property>
+    <addaction name="pageRedditAction"/>
+    <addaction name="pageUnsplashAction"/>
+    <addaction name="pageBingAction"/>
+    <addaction name="pageWallHavenAction"/>
+   </widget>
+   <widget class="QMenu" name="menuHistory">
+    <property name="title">
+     <string>History</string>
+    </property>
+    <addaction name="historyAction"/>
+   </widget>
+   <addaction name="menuNavigate"/>
+   <addaction name="menuHelp"/>
+   <addaction name="menuHistory"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="aboutAction">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="helpAction">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="redditAction">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Reddit Walls</string>
+   </property>
+  </action>
+  <action name="redditPageAction">
+   <property name="text">
+    <string>Reddit</string>
+   </property>
+  </action>
+  <action name="pageRedditAction">
+   <property name="text">
+    <string>Reddit Walls</string>
+   </property>
+  </action>
+  <action name="pageUnsplashAction">
+   <property name="text">
+    <string>Unsplash Walls</string>
+   </property>
+  </action>
+  <action name="pageBingAction">
+   <property name="text">
+    <string>Bing Walls</string>
+   </property>
+  </action>
+  <action name="pageWallHavenAction">
+   <property name="text">
+    <string>Wallhaven Walls</string>
+   </property>
+  </action>
+  <action name="historyAction">
+   <property name="text">
+    <string>View History</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
