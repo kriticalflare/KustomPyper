@@ -2,6 +2,7 @@ import random
 import secrets
 import wall
 import requests
+import exception_handle
 
 
 class Wallhaven:
@@ -79,17 +80,20 @@ class Wallhaven:
             image_count = 0
             for _ in response.json()["data"]:
                 image_count += 1
-            index = random.randint(0, image_count - 1)
-            print(image_count)
-            print(index)
-            image = response.json()["data"][index]
-            self._wallpaper_url = image["path"]
-            if self._prev_wall == self._wallpaper_url:
-                self.wallpapers()
-            self._prev_wall =  self._wallpaper_url
-            print(self._wallpaper_url)
-            self._image_extension = image["file_type"].replace("image/", ".")
-            # print(self._image_extension)
+            if image_count == 0:
+                raise exception_handle.NoResultsFound()
+            else:
+                index = random.randint(0, image_count - 1)
+                print(image_count)
+                print(index)
+                image = response.json()["data"][index]
+                self._wallpaper_url = image["path"]
+                if self._prev_wall == self._wallpaper_url:
+                    self.wallpapers()
+                self._prev_wall =  self._wallpaper_url
+                print(self._wallpaper_url)
+                self._image_extension = image["file_type"].replace("image/", ".")
+                # print(self._image_extension)
 
     def get_download_path(self):
         self.download_file = "pic1.jpeg"

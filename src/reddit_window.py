@@ -9,6 +9,7 @@ import reddit
 import wall
 import win_darkmode
 import utils
+import exception_handle
 
 
 class RedditWindow:
@@ -40,11 +41,16 @@ class RedditWindow:
         self.download_thread.start()
 
     def display_wallpaper(self, image_path):
-        self.image_path = image_path
-        self.ui.redditPhoto.setPixmap(QtGui.QPixmap(self.image_path))
-        self.ui.redditPhoto.setScaledContents(True)
-        self.enable_wall_buttons(True)
+        if image_path == "No results found!":
+            self.ui.redditPhoto.setText("No results found!")
+            self.enable_wall_buttons(True)
+        else:
+            self.image_path = image_path
+            self.ui.redditPhoto.setPixmap(QtGui.QPixmap(self.image_path))
+            self.ui.redditPhoto.setScaledContents(True)
+            self.enable_wall_buttons(True)
 
+        
     def save_wallpaper(self):
         if self.image_path is None:
             messagebox = QMessageBox()
@@ -104,7 +110,10 @@ class DownloadThread(QThread):
 
     # run method gets called when we start the thread
     def run(self):
-        self.reddit_instance.next_wallpaper()
-        self.image_path = self.reddit_instance.get_download_path()
-        utils.Helpers.download_wall(self.image_path, self.reddit_instance.wallpaper_url)
-        self.signal.emit(self.image_path)
+        try: 
+            self.reddit_instance.next_wallpaper()
+            self.image_path = self.reddit_instance.get_download_path()
+            utils.Helpers.download_wall(self.image_path, self.reddit_instance.wallpaper_url)
+            self.signal.emit(self.image_path)
+        except exception_handle.NoResultsFound:
+            self.signal.emit("No results found!")

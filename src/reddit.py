@@ -3,7 +3,7 @@ import requests
 import random
 import secrets
 import wall
-
+import exception_handle
 
 class Reddit:
     def __init__(self):
@@ -47,6 +47,7 @@ class Reddit:
 
     def next_wallpaper(self):
         print(self.subreddit)
+        self.count = 0
         if self.query != None:
             wallpaper_submissions = self.get_search_results()
             self.query = None
@@ -54,20 +55,34 @@ class Reddit:
             wallpaper_submissions = self.get_submissions()
         submission_list = []
         for submission in wallpaper_submissions:
+            self.count = self.count + 1
             submission_list.append(submission)
             # print(submission.title)
 
-        random_int = random.randint(0, self.limit - 1)
-        # print(random_int)
-        self.submission = submission_list[random_int]
-        self.wallpaper_url = submission_list[random_int].url
-        print(self.wallpaper_url)
-        if any(_ in self.wallpaper_url for _ in self.blacklistUrl):
-            #  pass on blacklisted urls (ie not direct image links)
-            self.next_wallpaper()
-        if self.prev_wall == self.wallpaper_url:
-            self.next_wallpaper()
-        self.prev_wall = self.wallpaper_url
+        if self.limit >= self.count:
+            self.upperlimit = self.count - 1
+        else:
+            self.upperlimit = self.limit - 1
+        
+        if self.upperlimit <= 0:
+            self.error_text = "No walls found"
+            raise exception_handle.NoResultsFound()
+        else:
+            self.error_text = ""
+            print(self.upperlimit)
+            random_int = random.randint(0, self.upperlimit)
+            # print(random_int)
+            self.submission = submission_list[random_int]
+            self.wallpaper_url = submission_list[random_int].url
+            print(self.wallpaper_url)
+            if any(_ in self.wallpaper_url for _ in self.blacklistUrl):
+                #  pass on blacklisted urls (ie not direct image links)
+                self.next_wallpaper()
+            if self.prev_wall == self.wallpaper_url:
+                self.next_wallpaper()
+            self.prev_wall = self.wallpaper_url
+        
+        
 
     def get_download_path(self):
         # find image extension

@@ -9,6 +9,7 @@ import wallhaven
 import wall
 import win_darkmode
 import utils
+import exception_handle
 
 
 class WallhavenWindow:
@@ -19,9 +20,6 @@ class WallhavenWindow:
         self.wh_instance = wallhaven.Wallhaven(self.screenSize.width(), self.screenSize.height())
         self.ui.whPhoto.setMaximumHeight(int(0.7 * self.screenSize.height()))
         self.ui.whPhoto.setMaximumWidth(int(0.99 * self.screenSize.width()))
-        # self.ui.whSearchTextEdit.setMaximumWidth(
-        #     int(0.15 * self.screenSize.width())
-        # )
         self.ui.whNextWallButton.clicked.connect(self.next_wallpaper)
         self.ui.whWallpaperButton.clicked.connect(self.set_wallpaper)
         self.ui.whSaveButton.clicked.connect(self.save_wallpaper)
@@ -89,10 +87,14 @@ class WallhavenWindow:
                 QMessageBox.warning(QMessageBox(), 'Error', 'Could not add wall to the history.')
 
     def display_wallpaper(self, image_path):
-        self.image_path = image_path
-        self.ui.whPhoto.setPixmap(QtGui.QPixmap(self.image_path))
-        self.ui.whPhoto.setScaledContents(True)
-        self.enable_wall_buttons(True)
+        if image_path == "No results found!":
+            self.ui.whPhoto.setText("No results found!")
+            self.enable_wall_buttons(True)
+        else: 
+            self.image_path = image_path
+            self.ui.whPhoto.setPixmap(QtGui.QPixmap(self.image_path))
+            self.ui.whPhoto.setScaledContents(True)
+            self.enable_wall_buttons(True)
 
     def toggle_dark_mode(self):
         if self.ui.whDarkModeCheck.isChecked():
@@ -160,9 +162,12 @@ class WallhavenDownloadThread(QThread):
             self.wh_instance.query = None
 
     def run(self):
-        self.wh_instance.wallpapers()
-        self.image_path = self.wh_instance.get_download_path()
-        utils.Helpers.download_wall(
-            self.image_path, self.wh_instance.wallpaper_url
-        )
-        self.signal.emit(self.image_path)
+        try:
+            self.wh_instance.wallpapers()
+            self.image_path = self.wh_instance.get_download_path()
+            utils.Helpers.download_wall(
+                self.image_path, self.wh_instance.wallpaper_url
+            )
+            self.signal.emit(self.image_path)
+        except exception_handle.NoResultsFound:
+            self.signal.emit("No results found!")
