@@ -79,6 +79,10 @@ class Wallhaven:
             image_count = 0
             for _ in response.json()["data"]:
                 image_count += 1
+                
+            if image_count == 0:
+                return False
+
             index = random.randint(0, image_count - 1)
             print(image_count)
             print(index)
